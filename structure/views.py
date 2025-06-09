@@ -8,4 +8,4 @@ def academic_year_list(request):
     context = {
         'academic_years': academic_years
     }
-    return render(request, 'structure/academic-year.html', )
+    return render(request, 'structure/academic-year.html', context)
