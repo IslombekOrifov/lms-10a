@@ -11,7 +11,6 @@ def academic_year_list(request):
     }
     return render(request, 'structure/academic-year.html', context)
 
-
 def academic_year_delete(request, pk):
     academic_years = AcademicYear.objects.get(id=pk).delete()
     return redirect('structure:academic_year_list')

@@ -1,5 +1,8 @@
 from django import forms
+from django.db.models import Q
+
 from .models import AcademicYear
+
 
 
 class AcademicYearForm(forms.ModelForm):
@@ -16,3 +19,7 @@ class AcademicYearForm(forms.ModelForm):
             'start_date': 'Start Date',
             'end_date': 'End Date',
         }
+    def __init__(self, *args, instance=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        if instance:
+            self.fields['parent'].queryset = AcademicYear.objects.exclude(Q(pk=instance.pk) | Q(parent=instance))     
