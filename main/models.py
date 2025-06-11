@@ -1,15 +1,25 @@
 from django.db import models
 from account.models import CustomUser
 from structure.models import ROOM_GROUP_TYPE, LANGUAGES, StudentGroup, ScienceGroup
+from mptt.models import MPTTModel, TreeForeignKey
 
 
 class School(models.Model):
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=255, null=True, blank=True)
+    about = models.TextField(null=True, blank=True)
+    address = models.CharField(max_length=255, null=True, blank=True)
+    phone = models.CharField(max_length=20, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
 
+    class MPTTMeta:
+        order_insertion_by = ['name']
+        
     def __str__(self):
         return f"{self.name}"
 

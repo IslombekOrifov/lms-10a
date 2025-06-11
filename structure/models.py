@@ -37,7 +37,6 @@ class AcademicYear(MPTTModel, models.Model):
         return f"{self.name}"
 
     
-    
 class Kafedra(models.Model):
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=255, null=True, blank=True)

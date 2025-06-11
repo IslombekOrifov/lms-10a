@@ -44,7 +44,7 @@
                 <option>Inactive</option>
               </select>
             </div>
-            <a href="{% url 'structure:academic_year_create' %}" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2"><iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>Add new Academic year</a>
+            <a href="{% url 'structure:kafedra_create' %}" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2"><iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>Add New Kafedra</a>
         </div>
         <div class="card-body">
           <table class="table bordered-table mb-0" data-page-length='10'>
@@ -59,15 +59,14 @@
                   </div>
                 </th>
                 <th scope="col">Name</th>
-                <th scope="col">Season</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">End Date</th>
+                <th scope="col">Code</th>
+                <th scope="col">Department user</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              {% for academic_year in academic_years %}
+              {% for kafedra in kafedras %}
               <tr>
                 <td>
                   <div class="form-check style-check d-flex align-items-center">
@@ -77,32 +76,31 @@
                     </label>
                   </div>
                 </td>
-                <td><a href="javascript:void(0)" class="text-primary-600">{{ academic_year.name }}</a></td>
+                <td><a href="javascript:void(0)" class="text-primary-600">{{ kafedra.name }}</a></td>
                 <td>
                   <div class="d-flex align-items-center">
                     <img src="assets/images/user-list/user-list1.png" alt="" class="flex-shrink-0 me-12 radius-8">
-                    <h6 class="text-md mb-0 fw-medium flex-grow-1">{{ academic_year.season}}</h6>
+                    <h6 class="text-md mb-0 fw-medium flex-grow-1">{{ kafedra.code}}</h6>
                   </div>
                 </td>
-                <td>{{ academic_year.start_date }}</td>
-                <td>{{ academic_year.end_date }}</td>
+                <td>{{ kafedra.department_user }}</td>
                 <td>
-                  {% if academic_year.is_active %}
+                  {% if kafedra.is_active %}
                     <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Active</span>
                   {% else %}
                     <span class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Not active</span>
                   {% endif %}
                 </td>
                 <td>
-                  <a href="{% url 'structure:academic_year_detail' academic_year.id %}"
+                  <a href="{% url 'structure:kafedra_detail' kafedra.id %}"
                     class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
                     <iconify-icon icon="iconamoon:eye-light"></iconify-icon>
                   </a>
-                  <a href="{% url 'structure:academic_year_update' academic_year.id %}"
+                  <a href="{% url 'structure:kafedra_update' kafedra.id %}"
                     class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                     <iconify-icon icon="lucide:edit"></iconify-icon>
                   </a>
-                  <a href="{% url 'structure:academic_year_delete' academic_year.id %}"
+                  <a href="{% url 'structure:kafedra_delete' kafedra.id %}"
                     class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
                     <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                   </a>

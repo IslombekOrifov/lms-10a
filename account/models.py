@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractUser
 class RoleName(models.TextChoices):
     ADMIN = 'admin', _('Administrator')
     DEKAN = 'dekan', _('Dekan')
-    RECTOR = 'rector', _('Rector')
+    DIRECTOR = 'director', _('Director')
     DEPARTMENT_USER = 'department_user', _('Department User')
     TUTOR = 'tutor', _('Tutor')
     STYLIST = 'stylist', _('Stylist')
@@ -72,7 +72,13 @@ class CustomUser(AbstractUser):
     mother_telegram_id = models.CharField(max_length=100, blank=True, null=True)
     
     start_work = models.DateField(blank=True, null=True)    
-    
+    school = models.ForeignKey(
+        'main.School',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='users'
+    )
     is_worker = models.BooleanField(default=False)
     is_archived = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)

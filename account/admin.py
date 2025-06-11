@@ -52,7 +52,8 @@ class CustomUserAdmin(UserAdmin):
             "fields": (
                 "is_verified",
                 "is_deleted",
-                "role"
+                "role",
+                "school"
             )
         }),
         (_("Important dates"), {

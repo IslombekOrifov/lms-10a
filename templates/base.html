@@ -224,6 +224,12 @@
             </a>
           </li>
           <li>
+            <a href="{% url 'structure:kafedra_list' %}">
+              <iconify-icon icon="solar:document-text-outline" class="menu-icon"></iconify-icon>
+              <span>Kafedras</span>
+            </a>
+          </li>
+          <li>
             <a href="{% url 'account:users_list' %}">
               <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
               <span>Users</span>
@@ -287,7 +293,7 @@
             </a>
             <ul class="sidebar-submenu">
               <li>
-                <a href="company.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Company</a>
+                <a href="{% url 'main:school_detail' %}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Company</a>
               </li>
               <li>
                 <a href="notification.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Notification</a>
